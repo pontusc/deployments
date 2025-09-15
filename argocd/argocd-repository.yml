@@ -8,4 +8,4 @@ metadata:
 type: Opaque
 stringData:
   type: git
-  url: https://gitlab.com/homelab-cloud/deployments
+  url: https://gitlab.com/homelab-cloud/deployments.git
