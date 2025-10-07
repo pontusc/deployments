@@ -10,6 +10,7 @@ spec:
     - 'https://bitnami-labs.github.io/sealed-secrets'
     - 'https://stakater.github.io/stakater-charts'
     - 'https://charts.longhorn.io'
+    - 'https://charts.jetstack.io'
   destinations:
     - namespace: '*'
       server: '*'
