@@ -3,8 +3,8 @@ deployment:
 
 service:
   type: ClusterIP
-  spec:
-    externalTrafficPolicy: Local
+  # spec:
+  #   externalTrafficPolicy: Local
 
 ports:
   web:
