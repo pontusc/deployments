@@ -31,7 +31,7 @@ spec:
     tlsStore:
       default:
         defaultCertificate:
-          secretName: cluster-wildcard-certificate
+          secretName: cluster-wildcard-certificate-tls
     logs:
       access:
         enabled: true
