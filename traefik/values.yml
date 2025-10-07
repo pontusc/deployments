@@ -10,6 +10,9 @@ ports:
   web:
     port: 80
     hostPort: 80
+    proxyProtocol:
+      trustedIPs:
+        - 10.0.0.254
     redirections:
       entryPoint:
         to: websecure
@@ -18,6 +21,9 @@ ports:
   websecure:
     port: 443
     hostPort: 443
+    proxyProtocol:
+      trustedIPs:
+        - 10.0.0.254
   metrics:
     expose:
       default: true
