@@ -14,7 +14,7 @@ spec:
         allowCrossNamespace: true
     ingressRoute:
       dashboard:
-        enabled: true
+        enabled: false
         matchRule: Host(`traefik.nejlikka.com`)
         entryPoints:
           - websecure
