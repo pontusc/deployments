@@ -1,21 +1,16 @@
 deployment:
   kind: DaemonSet
-  dnsPolicy: ClusterFirstWithHostNet
-
-updateStrategy:
-  type: RollingUpdate
-  rollingUpdate:
-    maxUnavailable: 1
-    maxSurge: null
 
 service:
   type: ClusterIP
 
-hostNetwork: true
+updateStrategy:
+  type: OnDelete
 
 ports:
   web:
-    port: 8080
+    port: 80
+    hostPort: 80
     proxyProtocol:
       trustedIPs:
         - 10.0.0.254
@@ -25,14 +20,17 @@ ports:
         scheme: https
         permanent: true
   websecure:
-    port: 8443
+    port: 443
+    hostPort: 443
     proxyProtocol:
       trustedIPs:
         - 10.0.0.254
-  traefik:
-    port: 9000
+  teamspeak:
+    port: 9987
+    hostPort: 9987
+    protocol: UDP
     expose:
-      default: false
+      default: true
   metrics:
     expose:
       default: true
