@@ -6,6 +6,7 @@ updateStrategy:
   type: RollingUpdate
   rollingUpdate:
     maxUnavailable: 1
+    maxSurge: null
 
 service:
   type: ClusterIP
