@@ -1,0 +1,54 @@
+server:
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - authentik.cloud.nejlikka.com
+
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
+redis:
+  enabled: true
+  master:
+    persistence:
+      size: 1Gi
+
+postgresql:
+  enabled: false
+
+# Get all DB settings from the generated DB secret from CNPG
+global:
+  env:
+    - name: AUTHENTIK_POSTGRESQL__HOST
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-app
+          key: host
+    - name: AUTHENTIK_POSTGRESQL__PORT
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-app
+          key: port
+    - name: AUTHENTIK_POSTGRESQL__USER
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-app
+          key: username
+    - name: AUTHENTIK_POSTGRESQL__PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-app
+          key: password
+    - name: AUTHENTIK_POSTGRESQL__NAME
+      valueFrom:
+        secretKeyRef:
+          name: authentik-db-app
+          key: dbname
+
+  envFrom:
+    - secretRef:
+        # This secret contains a bunch of environment variables
+        name: authentik-secrets
