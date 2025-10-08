@@ -20,6 +20,7 @@ worker:
 blueprints:
   secrets:
     - google-oauth-blueprint
+    - argocd-sso-blueprint
 
 redis:
   enabled: true
