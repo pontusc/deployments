@@ -7,12 +7,21 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: core-utilities
-  source:
-    chart: cloudnative-pg
-    repoURL: https://cloudnative-pg.io/charts/
-    targetRevision: 0.26.0
-    helm:
-      releaseName: cnpg
+  sources:
+    # Helm chart source
+    - chart: cloudnative-pg
+      repoURL: https://cloudnative-pg.io/charts/
+      targetRevision: 0.26.0
+      helm:
+        releaseName: cnpg
+        valueFiles:
+          - $values/cnpg/operator-values.yml
+
+    # Values file source
+    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+      targetRevision: HEAD
+      ref: values
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: cnpg-system
