@@ -10,6 +10,13 @@ server:
     serviceMonitor:
       enabled: true
 
+  deploymentAnnotations:
+    reloader.stakater.com/auto: "true"
+
+worker:
+  deploymentAnnotations:
+    reloader.stakater.com/auto: "true"
+
 redis:
   enabled: true
   master:

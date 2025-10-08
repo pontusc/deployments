@@ -13,6 +13,7 @@ spec:
     - 'https://charts.jetstack.io'
     - 'https://traefik.github.io/charts'
     - 'https://cloudnative-pg.io/charts/'
+    - 'https://charts.goauthentik.io/'
   destinations:
     - namespace: '*'
       server: '*'
