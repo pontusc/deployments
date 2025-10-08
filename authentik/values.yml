@@ -17,6 +17,10 @@ worker:
   deploymentAnnotations:
     reloader.stakater.com/auto: "true"
 
+blueprints:
+  secrets:
+    - google-oauth-blueprint
+
 redis:
   enabled: true
   master:
