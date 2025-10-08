@@ -12,12 +12,12 @@ server:
 
   deploymentAnnotations:
     reloader.stakater.com/auto: "true"
-    deployment.reloader.stakater.com/pause-period: "5s"
+    deployment.reloader.stakater.com/pause-period: "10s"
 
 worker:
   deploymentAnnotations:
     reloader.stakater.com/auto: "true"
-    deployment.reloader.stakater.com/pause-period: "5s"
+    deployment.reloader.stakater.com/pause-period: "10s"
 
 blueprints:
   secrets:
