@@ -15,10 +15,22 @@ entries:
     attrs:
       expression: |
         allowed_emails = ["pontuscurtsson@gmail.com"]
+        admin_email = "pontuscurtsson@gmail.com"
         current_email = request.context["prompt_data"]["email"]
+
         if current_email in allowed_emails:
+            if current_email == admin_email:
+                argocd_group = Group.objects.get(name="ArgoCD Admins")
+                authentik_group = Group.objects.get(name="authentik Admins")
+            else:
+                argocd_group = Group.objects.get(name="ArgoCD Viewers")
+                authentik_group = Group.objects.get(name="authentik Read-only")
+
             # Set username to current email, SSO should use email as user
+            # Also assign groups and set to internal
             request.context["prompt_data"]["username"] = current_email
+            request.context["prompt_data"]["type"] = "internal"
+            request.context["prompt_data"]["groups"] = [argocd_group, authentik_group]
             return ak_is_sso_flow
         else:
             ak_message("Access denied for this email")
