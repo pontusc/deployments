@@ -17,12 +17,16 @@ server:
 worker:
   deploymentAnnotations:
     reloader.stakater.com/auto: "true"
+    # Delay because SealedSecrets can take a coupleof seconds and else you get a "cannot mount blueprint" error
     deployment.reloader.stakater.com/pause-period: "10s"
 
 blueprints:
+  configmaps:
+    - argocd-integration-blueprint
+    - oauth-flow-blueprint
   secrets:
-    - google-oauth-blueprint
-    - argocd-sso-blueprint
+    - argocd-oauth-provider-blueprint
+    - google-oauth-source-blueprint
 
 redis:
   enabled: true
