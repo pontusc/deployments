@@ -11,7 +11,7 @@ for file in "$SOURCE_DIR"/*.y*ml; do
   name="${filename%.*}"
 
   kubectl create configmap "$name" \
-    --from-file="$file" \
+    --from-file="$name.yaml=$file" \
     --namespace="$NAMESPACE" \
     --dry-run=client -o yaml > "$TARGET_DIR/cm-$filename"
 done
