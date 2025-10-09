@@ -21,7 +21,7 @@ worker:
     deployment.reloader.stakater.com/pause-period: "10s"
 
 blueprints:
-  configmaps:
+  configMaps:
     - argocd-integration-blueprint
     - oauth-flow-blueprint
   secrets:
