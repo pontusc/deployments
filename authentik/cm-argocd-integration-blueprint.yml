@@ -1,0 +1,38 @@
+apiVersion: v1
+data:
+  argocd-integration-blueprint.yml: |
+    version: 1
+    metadata:
+      name: argocd-integration
+    entries:
+      # Dependencies
+      - model: authentik_blueprints.metaapplyblueprint
+        attrs:
+          identifiers:
+            name: argocd-oauth-provider
+
+      - model: authentik_core.group
+        state: created
+        identifiers:
+          name: ArgoCD Admins
+        attrs:
+          is_superuser: false
+
+      - model: authentik_core.group
+        state: created
+        identifiers:
+          name: ArgoCD Viewers
+        attrs:
+          is_superuser: false
+
+      - model: authentik_core.application
+        state: created
+        identifiers:
+          slug: argocd
+        attrs:
+          name: ArgoCD
+          provider: !Find [authentik_providers_oauth2.oauth2provider, [name, ArgoCD]]
+kind: ConfigMap
+metadata:
+  name: argocd-integration-blueprint
+  namespace: authentik

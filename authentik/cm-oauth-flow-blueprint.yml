@@ -1,0 +1,67 @@
+apiVersion: v1
+data:
+  oauth-flow-blueprint.yml: |
+    version: 1
+    metadata:
+      name: oauth-flow
+    entries:
+      # Dependencies, need google oauth source to exist
+      - model: authentik_blueprints.metaapplyblueprint
+        attrs:
+          identifiers:
+            name: google-oauth-source
+
+      # Create expressionpolicy to verify that user is an allowed google account
+      - model: authentik_policies_expression.expressionpolicy
+        state: created
+        identifiers:
+          name: google-account-restriction
+        attrs:
+          expression: |
+            allowed_emails = ["pontuscurtsson@gmail.com"]
+            email = request.context.get("prompt_data", {}).get("email", "")
+            if email not in allowed_emails:
+                ak_message("Email not authorized")
+                return False
+            return True
+
+      # Extract the email and use it as username for google accounts
+      - model: authentik_policies_expression.expressionpolicy
+        state: created
+        identifiers:
+          name: google-email-to-username
+        attrs:
+          expression: |
+            email = request.context["prompt_data"]["email"]
+            request.context["prompt_data"]["username"] = email
+            return True
+
+      # Bind expressions to flow
+      - model: authentik_policies.policybinding
+        state: created
+        identifiers:
+          order: 0
+          target: !Find [authentik_flows.flow, [slug, default-source-enrollment]]
+          policy: !Find [authentik_policies_expression.expressionpolicy, [name, google-email-to-username]]
+        attrs:
+          enabled: true
+
+      - model: authentik_policies.policybinding
+        state: created
+        identifiers:
+          order: -10
+          target: !Find [authentik_flows.flow, [slug, default-source-enrollment]]
+          policy: !Find [authentik_policies_expression.expressionpolicy, [name, google-account-restriction]]
+        attrs:
+          enabled: true
+
+      - model: authentik_stages_identification.identificationstage
+        identifiers:
+          name: default-authentication-identification
+        attrs:
+          sources:
+            - !Find [authentik_sources_oauth.oauthsource, [slug, google]]
+kind: ConfigMap
+metadata:
+  name: oauth-flow-blueprint
+  namespace: authentik
