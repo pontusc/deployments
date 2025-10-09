@@ -35,7 +35,7 @@ entries:
 
   # Bind expressions to flow
   - model: authentik_policies.policybinding
-    state: created
+    state: present
     identifiers:
       order: 0
       target: !Find [authentik_flows.flow, [slug, default-source-enrollment]]
@@ -44,7 +44,7 @@ entries:
       enabled: true
 
   - model: authentik_policies.policybinding
-    state: created
+    state: present
     identifiers:
       order: -10
       target: !Find [authentik_flows.flow, [slug, default-source-enrollment]]
