@@ -11,49 +11,21 @@ data:
           identifiers:
             name: google-oauth-source
 
-      # Create expressionpolicy to verify that user is an allowed google account
+      # Replaces existing policy with below, to only allow specific user to register with SSO
       - model: authentik_policies_expression.expressionpolicy
-        state: created
         identifiers:
-          name: google-account-restriction
+          name: default-source-enrollment-if-sso
         attrs:
           expression: |
             allowed_emails = ["pontuscurtsson@gmail.com"]
-            email = request.context.get("oauth_userinfo", {}).get("email", "")
-            if email not in allowed_emails:
-                ak_message(f"Email {email} not authorized")
+            current_email = request.context["prompt_data"]["email"]
+            if current_email in allowed_emails:
+                # Set username to current email, SSO should use email as user
+                request.context["prompt_data"]["username"] = current_email
+                return ak_is_sso_flow
+            else:
+                ak_message("Access denied for this email")
                 return False
-            return True
-
-      # Extract the email and use it as username for google accounts
-      - model: authentik_policies_expression.expressionpolicy
-        state: created
-        identifiers:
-          name: google-email-to-username
-        attrs:
-          expression: |
-            email = request.context["prompt_data"]["email"]
-            request.context["prompt_data"]["username"] = email
-            return True
-
-      # Bind expressions to flow
-      - model: authentik_policies.policybinding
-        state: present
-        identifiers:
-          order: 0
-          target: !Find [authentik_flows.flow, [slug, default-source-enrollment]]
-          policy: !Find [authentik_policies_expression.expressionpolicy, [name, google-email-to-username]]
-        attrs:
-          enabled: true
-
-      - model: authentik_policies.policybinding
-        state: present
-        identifiers:
-          order: 0
-          target: !Find [authentik_flows.flow, [slug, google]]
-          policy: !Find [authentik_policies_expression.expressionpolicy, [name, google-account-restriction]]
-        attrs:
-          enabled: true
 
       - model: authentik_stages_identification.identificationstage
         identifiers:
