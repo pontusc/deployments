@@ -9,7 +9,9 @@ for file in "$SOURCE_DIR"/*.y*ml; do
 
   filename=$(basename "$file")
   name="${filename%.*}"
-
+  
+  # --from-file expects a "KEY=PATH" structure, where KEY is the name of the configmaps data key,
+  # and the PATH is the file to read contents from
   kubectl create configmap "$name" \
     --from-file="$name.yaml=$file" \
     --namespace="$NAMESPACE" \
