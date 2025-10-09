@@ -16,9 +16,9 @@ entries:
     attrs:
       expression: |
         allowed_emails = ["pontuscurtsson@gmail.com"]
-        email = request.context.get("prompt_data", {}).get("email", "")
+        email = request.context.get("oauth_userinfo", {}).get("email", "")
         if email not in allowed_emails:
-            ak_message("Email not authorized")
+            ak_message(f"Email {email} not authorized")
             return False
         return True
 
@@ -46,8 +46,8 @@ entries:
   - model: authentik_policies.policybinding
     state: present
     identifiers:
-      order: -10
-      target: !Find [authentik_flows.flow, [slug, default-source-enrollment]]
+      order: 0
+      target: !Find [authentik_flows.flow, [slug, google]]
       policy: !Find [authentik_policies_expression.expressionpolicy, [name, google-account-restriction]]
     attrs:
       enabled: true
