@@ -17,27 +17,59 @@ data:
           name: default-source-enrollment-if-sso
         attrs:
           expression: |
+            from authentik.core.models import Group
+
+            # This can be changed later to be domain, etc
             allowed_emails = ["pontuscurtsson@gmail.com"]
-            admin_email = "pontuscurtsson@gmail.com"
             current_email = request.context["prompt_data"]["email"]
 
             if current_email in allowed_emails:
-                if current_email == admin_email:
-                    argocd_group = Group.objects.get(name="ArgoCD Admins")
-                    authentik_group = Group.objects.get(name="authentik Admins")
-                else:
-                    argocd_group = Group.objects.get(name="ArgoCD Viewers")
-                    authentik_group = Group.objects.get(name="authentik Read-only")
-
                 # Set username to current email, SSO should use email as user
-                # Also assign groups and set to internal
+                # Also set type to internal, external has 0 access
                 request.context["prompt_data"]["username"] = current_email
                 request.context["prompt_data"]["type"] = "internal"
-                request.context["prompt_data"]["groups"] = [argocd_group, authentik_group]
                 return ak_is_sso_flow
             else:
                 ak_message("Access denied for this email")
                 return False
+
+      # This policy is to be bound to the login stage, so it gets ran after user creation
+      - model: authentik_policies_expression.expressionpolicy
+        state: created
+        identifiers:
+          name: sso-add-to-groups
+        attrs:
+          expression: |
+            from authentik.core.models import Group, User
+
+            default_admins = ["pontuscurtsson@gmail.com"]
+
+            user_to_find = request.context["prompt_data"]["username"]
+            user = User.objects.get(username=user_to_find)
+
+            if user_to_find in default_admins:
+              groups = [
+                Group.objects.get(name="ArgoCD Admins"),
+                Group.objects.get(name="authentik Admins")
+              ]
+            else:
+              groups = [
+                Group.objects.get(name="ArgoCD Viewers"),
+                Group.objects.get(name="authentik Read-only")
+              ]
+            for group in groups:
+              user.ak_groups.add(group)
+
+            return True
+
+      - model: authentik_policies.policybinding
+        state: present
+        identifiers:
+          order: 0
+          target: !Find [authentik_flows.flowstagebinding, [stage__name, default-source-enrollment-login]]
+          policy: !Find [authentik_policies_expression.expressionpolicy, [name, sso-add-to-groups]]
+        attrs:
+          enabled: true
 
       - model: authentik_stages_identification.identificationstage
         identifiers:
