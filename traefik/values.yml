@@ -41,7 +41,12 @@ providers:
 
 ingressRoute:
   dashboard:
-    enabled: false
+    enabled: true
+    entryPoints: ["websecure"]
+    matchRule: Host(`traefik.cloud.nejlikka.com`)
+    middlewares:
+      - name: forward-auth
+        namespace: authentik
 
 tlsStore:
   default:
