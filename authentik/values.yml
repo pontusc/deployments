@@ -24,6 +24,7 @@ blueprints:
   configMaps:
     - argocd-integration-blueprint
     - oauth-flow-blueprint
+    - forward-auth-blueprint
   secrets:
     - argocd-oauth-provider-blueprint
     - google-oauth-source-blueprint
