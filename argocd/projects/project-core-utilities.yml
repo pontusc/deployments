@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: core-utilities
+  namespace: argocd
+spec:
+  description: All core utilities for cluster operation
+  sourceRepos:
+    - 'https://gitlab.com/homelab-cloud/deployments'
+    - 'https://bitnami-labs.github.io/sealed-secrets'
+    - 'https://stakater.github.io/stakater-charts'
+    - 'https://charts.longhorn.io'
+    - 'https://charts.jetstack.io'
+    - 'https://traefik.github.io/charts'
+    - 'https://cloudnative-pg.io/charts/'
+    - 'https://charts.goauthentik.io/'
+  destinations:
+    - namespace: '*'
+      server: '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
