@@ -20,7 +20,7 @@ data:
             from authentik.core.models import Group
 
             # This can be changed later to be domain, etc
-            allowed_emails = ["pontuscurtsson@gmail.com"]
+            allowed_emails = ["pontuscurtsson@gmail.com", "pontus.curtsson@chasacademy.se"]
             current_email = request.context["prompt_data"]["email"]
 
             if current_email in allowed_emails:
