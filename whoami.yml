@@ -39,6 +39,9 @@ spec:
   routes:
     - match: Host(`whoami.cloud.nejlikka.com`)
       kind: Rule
+      middlewares:
+        - name: forward-auth
+          namespace: authentik
       services:
         - name: whoami
           port: 80

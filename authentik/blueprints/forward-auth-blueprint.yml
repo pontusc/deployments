@@ -1,0 +1,28 @@
+version: 1
+metadata:
+  name: forward-auth
+entries:
+  # Create application and provider
+  - model: authentik_core.application
+    identifiers:
+      slug: forward-auth
+    attrs:
+      name: Forward Auth
+      policy_engine_mode: all
+
+  - model: authentik_providers_proxy.proxyprovider
+    identifiers:
+      name: Forward Auth Provider
+    attrs:
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+      mode: forward_domain
+      cookie_domain: cloud.nejlikka.com
+      external_host: https://authentik.cloud.nejlikka.com
+      application: !Find [authentik_core.application, [slug, forward-auth]]
+
+  - model: authentik_outposts.outpost
+    identifiers:
+      name: authentik Embedded Outpost
+    attrs:
+      providers:
+        - !Find [authentik_providers_proxy.proxyprovider, [name, Forward Auth Provider]]
