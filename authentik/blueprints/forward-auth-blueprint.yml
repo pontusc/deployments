@@ -27,3 +27,11 @@ entries:
     attrs:
       providers:
         - !Find [authentik_providers_proxy.proxyprovider, [name, Forward Auth Provider]]
+
+  - model: authentik_policies.policybinding
+    identifiers:
+      target: !Find [authentik_core.application, [slug, forward-auth]]
+      group: !Find [authentik_core.group, [name, authentik Admins]]
+      order: 0
+    attrs:
+      enabled: true
