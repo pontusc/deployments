@@ -1,5 +1,19 @@
 persistence:
+  defaultClass: true
   defaultClassReplicaCount: 2
+
+ingress:
+  enabled: true
+  ingressClassName: traefik
+  host: longhorn.cloud.nejlikka.com
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    #                       format: *middleware-namespace*-*middleware-name*@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middleware: authentik-forward-auth@kubernetescrd
+
+metrics:
+  serviceMonitor:
+    enabled: true
 
 # Needed when deploying via argoCD/Helm, see https://github.com/longhorn/longhorn/issues/4853
 preUpgradeChecker:
