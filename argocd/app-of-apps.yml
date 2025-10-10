@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps
+  namespace: argocd
+spec:
+  project: core-utilities
+  sources:
+    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+      targetRevision: HEAD
+      path: argocd/applications
+
+    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+      targetRevision: HEAD
+      path: argocd/projects
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
