@@ -25,24 +25,6 @@ ports:
     proxyProtocol:
       trustedIPs:
         - 10.0.0.254
-  # ts-voice:
-  #   port: 9987
-  #   hostPort: 9987
-  #   protocol: UDP
-  #   expose:
-  #     default: true
-  # ts-filetransfer:
-  #   port: 30033
-  #   hostPort: 30033
-  #   protocol: TCP
-  #   expose:
-  #     default: true
-  # ts-accounting:
-  #   port: 2008
-  #   hostPort: 2008
-  #   protocol: TCP
-  #   expose:
-  #     default: true
   metrics:
     expose:
       default: true
