@@ -9,6 +9,8 @@ entries:
         name: google-oauth-source
 
   # Replaces existing policy with below, to only allow specific user to register with SSO
+  # TODO: THIS DOES NOT WORK, to automate this it needs to remake the entire source enrollment flow
+  # TODO: it cant overwrite existing or something to that effect, at least not reliably
   - model: authentik_policies_expression.expressionpolicy
     state: present
     identifiers:
