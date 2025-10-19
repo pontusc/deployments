@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: core-utilities
+  sources:
+    # Helm chart source
+    - chart: kube-prometheus-stack
+      repoURL: https://prometheus-community.github.io/helm-charts
+      targetRevision: 78.3.2
+      helm:
+        releaseName: prometheus-grafana
+        valueFiles:
+          - $values/monitoring/prometheus-grafana-values.yml
+
+    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+      targetRevision: HEAD
+      ref: values
+
+    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+      targetRevision: HEAD
+      path: monitoring
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true
