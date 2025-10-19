@@ -40,7 +40,7 @@ spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       nodeSelector:
-        kubernetes.io/hostname: cluster-node-1
+        kubernetes.io/hostname: cluster-node-3
       containers:
         - name: teamspeak-server
           image: teamspeak:3.13.7
