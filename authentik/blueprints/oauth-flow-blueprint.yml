@@ -10,6 +10,7 @@ entries:
 
   # Replaces existing policy with below, to only allow specific user to register with SSO
   - model: authentik_policies_expression.expressionpolicy
+    state: present
     identifiers:
       name: default-source-enrollment-if-sso
     attrs:
