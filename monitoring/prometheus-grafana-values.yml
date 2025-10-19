@@ -27,10 +27,10 @@ prometheus:
   prometheusSpec:
     retention: 7d
     retentionSize: "8GiB"
-  storageSpec:
-    volumeClaimTemplate:
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 9Gi
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 9Gi
