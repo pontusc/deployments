@@ -22,6 +22,11 @@ spec:
       targetRevision: HEAD
       ref: values
 
+    # Source middlewares etc
+    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+      targetRevision: HEAD
+      path: traefik
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-system
