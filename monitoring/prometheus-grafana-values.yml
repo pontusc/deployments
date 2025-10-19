@@ -1,0 +1,29 @@
+grafana:
+  admin:
+    existingSecret: grafana-admin-credentials
+    userKey: admin-user
+    passwordKey: admin-password
+
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    hosts:
+      - grafana.cloud.nejlikka.com
+
+  persistence:
+    enabled: true
+    size: 1Gi
+
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      url: http://loki:3100
+      access: proxy
+      isDefault: false
+
+prometheus:
+  prometheusSpec:
+    retention: 7d
+    retentionSize: "8GiB"
