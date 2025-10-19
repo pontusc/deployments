@@ -23,7 +23,7 @@ spec:
 
     - repoURL: https://gitlab.com/homelab-cloud/deployments.git
       targetRevision: HEAD
-      path: manifests/monitoring
+      path: monitoring
 
   destination:
     server: "https://kubernetes.default.svc"
