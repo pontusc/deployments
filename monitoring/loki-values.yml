@@ -26,9 +26,6 @@ loki:
     enable_api: true
 
 monitoring:
-  dashboards:
-    enabled: true
-    namespace: monitoring
   serviceMonitor:
     enabled: true
 
