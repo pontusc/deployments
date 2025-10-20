@@ -36,9 +36,7 @@ prometheus:
   prometheusSpec:
     retention: 7d
     retentionSize: "8GiB"
-    serviceMonitorSelector:
-      matchLabels:
-        prometheus.io/scrape: "true"
+    serviceMonitorSelector: {}
     serviceMonitorNamespaceSelector: {}
     # Disables serviceMonitor label autofill from helm chart
     serviceMonitorSelectorNilUsesHelmValues: false

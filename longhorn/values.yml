@@ -14,8 +14,6 @@ ingress:
 metrics:
   serviceMonitor:
     enabled: true
-    additionalLabels:
-      prometheus.io/scrape: "true"
 
 # Needed when deploying via argoCD/Helm, see https://github.com/longhorn/longhorn/issues/4853
 preUpgradeChecker:

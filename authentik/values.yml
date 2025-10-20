@@ -9,8 +9,6 @@ server:
     enabled: true
     serviceMonitor:
       enabled: true
-      labels:
-        prometheus.io/scrape: "true"
 
   deploymentAnnotations:
     reloader.stakater.com/auto: "true"
@@ -21,8 +19,6 @@ worker:
     enabled: true
     serviceMonitor:
       enabled: true
-      labels:
-        prometheus.io/scrape: "true"
 
   deploymentAnnotations:
     reloader.stakater.com/auto: "true"
