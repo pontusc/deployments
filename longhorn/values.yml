@@ -6,8 +6,6 @@ ingress:
   enabled: true
   ingressClassName: traefik
   host: longhorn.cloud.nejlikka.com
-  path: /
-  pathType: ImplementationSpecific
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     #                       format: *middleware-namespace*-*middleware-name*@kubernetescrd
