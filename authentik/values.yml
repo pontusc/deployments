@@ -15,6 +15,11 @@ server:
     deployment.reloader.stakater.com/pause-period: "10s"
 
 worker:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+
   deploymentAnnotations:
     reloader.stakater.com/auto: "true"
     # Delay because SealedSecrets can take a coupleof seconds and else you get a "cannot mount blueprint" error
