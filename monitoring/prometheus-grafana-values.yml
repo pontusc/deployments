@@ -38,6 +38,8 @@ prometheus:
     retentionSize: "8GiB"
     serviceMonitorSelector: {}
     serviceMonitorNamespaceSelector: {}
+    # Disables serviceMonitor label autofill from helm chart
+    serviceMonitorSelectorNilUsesHelmValues: false
     storageSpec:
       volumeClaimTemplate:
         spec:
