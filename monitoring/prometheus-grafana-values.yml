@@ -40,6 +40,9 @@ prometheus:
     serviceMonitorNamespaceSelector: {}
     # Disables serviceMonitor label autofill from helm chart
     serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelector: {}
+    podMonitorNamespaceSelector: {}
+    podMonitorSelectorNilUsesHelmValues: false
     storageSpec:
       volumeClaimTemplate:
         spec:
