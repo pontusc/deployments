@@ -36,6 +36,8 @@ prometheus:
   prometheusSpec:
     retention: 7d
     retentionSize: "8GiB"
+    serviceMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
     storageSpec:
       volumeClaimTemplate:
         spec:
