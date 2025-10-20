@@ -24,6 +24,15 @@ grafana:
       isDefault: false
 
 prometheus:
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - prometheus.cloud.nejlikka.com
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.middlewares: authentik-forward-auth@kubernetescrd
+
   prometheusSpec:
     retention: 7d
     retentionSize: "8GiB"
@@ -34,3 +43,13 @@ prometheus:
           resources:
             requests:
               storage: 9Gi
+
+alertmanager:
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - alertmanager.cloud.nejlikka.com
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.middlewares: authentik-forward-auth@kubernetescrd
