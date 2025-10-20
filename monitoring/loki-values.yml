@@ -18,7 +18,6 @@ loki:
     volume_enabled: true
     retention_period: 7d
   compactor:
-    delete_request_store: s3
     compaction_interval: 10m
     retention_enabled: true
     retention_delete_delay: 2h
