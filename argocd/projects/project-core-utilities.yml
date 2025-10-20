@@ -15,6 +15,7 @@ spec:
     - 'https://cloudnative-pg.io/charts/'
     - 'https://charts.goauthentik.io/'
     - 'https://prometheus-community.github.io/helm-charts'
+    - 'https://grafana.github.io/helm-charts'
   destinations:
     - namespace: '*'
       server: '*'
