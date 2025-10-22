@@ -9,9 +9,9 @@ metadata:
 spec:
   project: deployments
   source:
-    repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    repoURL: https://github.com/pontusc/aboutme
     targetRevision: HEAD
-    path: aboutme
+    path: manifests
 
   destination:
     server: "https://kubernetes.default.svc"
