@@ -17,11 +17,11 @@ spec:
         valueFiles:
           - $values/cert-manager/values.yml
 
-    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    - repoURL: https://github.com/pontusc/deployments.git
       targetRevision: HEAD
       ref: values
 
-    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    - repoURL: https://github.com/pontusc/deployments.git
       targetRevision: HEAD
       path: cert-manager
 

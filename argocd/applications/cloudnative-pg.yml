@@ -20,7 +20,7 @@ spec:
           - $values/cnpg/operator-values.yml
 
     # Values file source
-    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    - repoURL: https://github.com/pontusc/deployments.git
       targetRevision: HEAD
       ref: values
 

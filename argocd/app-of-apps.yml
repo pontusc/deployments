@@ -6,11 +6,11 @@ metadata:
 spec:
   project: core-utilities
   sources:
-    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    - repoURL: https://github.com/pontusc/deployments.git
       targetRevision: HEAD
       path: argocd/applications
 
-    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    - repoURL: https://github.com/pontusc/deployments.git
       targetRevision: HEAD
       path: argocd/projects
   destination:

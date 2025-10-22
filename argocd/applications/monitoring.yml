@@ -33,16 +33,16 @@ spec:
         valueFiles:
           - $values/monitoring/alloy-values.yml
 
-    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    - repoURL: https://github.com/pontusc/deployments.git
       targetRevision: HEAD
       ref: values
 
       # Kustomize configmap source
-    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    - repoURL: https://github.com/pontusc/deployments.git
       targetRevision: HEAD
       path: monitoring/resources
 
-    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    - repoURL: https://github.com/pontusc/deployments.git
       targetRevision: HEAD
       path: monitoring
 

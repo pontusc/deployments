@@ -9,11 +9,11 @@ metadata:
 spec:
   project: deployments
   sources:
-    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    - repoURL: https://github.com/pontusc/deployments.git
       targetRevision: HEAD
       path: homepage
 
-    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+    - repoURL: https://github.com/pontusc/deployments.git
       targetRevision: HEAD
       path: homepage/config
 

@@ -6,7 +6,7 @@ metadata:
 spec:
   description: All core utilities for cluster operation
   sourceRepos:
-    - 'https://gitlab.com/homelab-cloud/deployments'
+    - 'https://github.com/pontusc/deployments'
     - 'https://bitnami-labs.github.io/sealed-secrets'
     - 'https://stakater.github.io/stakater-charts'
     - 'https://charts.longhorn.io'
