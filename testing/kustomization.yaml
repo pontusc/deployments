@@ -1,7 +1,0 @@
-configMapGenerator:
-  - name: cm-testing
-    files:
-      - example.conf
-
-generatorOptions:
-  disableNameSuffixHash: true
