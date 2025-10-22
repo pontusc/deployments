@@ -1,15 +1,19 @@
 configMapGenerator:
   - name: argocd-integration-blueprint
     files:
-      - argocd-integration-blueprint.yml
+      - argocd-integration-blueprint.yaml
+
+  - name: grafana-integration-blueprint
+    files:
+      - grafana-integration-blueprint.yaml
 
   - name: oauth-flow-blueprint
     files:
-      - oauth-flow-blueprint.yml
+      - oauth-flow-blueprint.yaml
 
   - name: forward-auth-blueprint
     files:
-      - forward-auth-blueprint.yml
+      - forward-auth-blueprint.yaml
 
 generatorOptions:
   disableNameSuffixHash: true

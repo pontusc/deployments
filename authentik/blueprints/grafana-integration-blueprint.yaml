@@ -1,0 +1,37 @@
+version: 1
+metadata:
+  name: grafana-integration
+entries:
+  - model: authentik_blueprints.metaapplyblueprint
+    attrs:
+      identifiers:
+        name: grafana-oauth-provider
+
+  - model: authentik_core.group
+    state: created
+    identifiers:
+      name: Grafana Admins
+    attrs:
+      is_superuser: false
+
+  - model: authentik_core.group
+    state: created
+    identifiers:
+      name: Grafana Editors
+    attrs:
+      is_superuser: false
+
+  - model: authentik_core.group
+    state: created
+    identifiers:
+      name: Grafana Viewers
+    attrs:
+      is_superuser: false
+
+  - model: authentik_core.application
+    state: created
+    identifiers:
+      slug: grafana
+    attrs:
+      name: Grafana
+      provider: !Find [authentik_providers_oauth2.oauth2provider, [name, Grafana]]
