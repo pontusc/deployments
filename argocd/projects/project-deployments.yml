@@ -6,7 +6,7 @@ metadata:
 spec:
   description: All deployments to run on cluster
   sourceRepos:
-    - https://gitlab.com/homelab-cloud/deployments
+    - https://github.com/pontusc/deployments
     - https://github.com/pontusc/aboutme
   destinations:
     - namespace: '*'
