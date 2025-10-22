@@ -159,23 +159,24 @@ spec:
             - name: HOMEPAGE_ALLOWED_HOSTS
               value: cloud.nejlikka.com
 
-            - name: HOMEPAGE_VAR_ARGO_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: homepage-secrets
-                  key: argo-api-key
+          # - name: HOMEPAGE_VAR_ARGO_API_KEY
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: homepage-secrets
+          #       key: argo-api-key
+          #
+          # - name: HOMEPAGE_VAR_GRAFANA_PASSWORD
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: homepage-secrets
+          #       key: grafana-password
+          #
+          # - name: HOMEPAGE_VAR_AUTHENTIK_API_KEY
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name: homepage-secrets
+          #       key: authentik-api-key
 
-            - name: HOMEPAGE_VAR_GRAFANA_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: homepage-secrets
-                  key: grafana-password
-
-            - name: HOMEPAGE_VAR_AUTHENTIK_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: homepage-secrets
-                  key: authentik-api-key
           ports:
             - name: http
               containerPort: 3000
