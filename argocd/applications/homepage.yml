@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homepage
+  namespace: argocd
+  annotations:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: deployments
+  sources:
+    - repoURL: https://gitlab.com/homelab-cloud/deployments
+      targetRevision: HEAD
+      path: homepage
+
+    - repoURL: https://gitlab.com/homelab-cloud/deployments
+      targetRevision: HEAD
+      path: homepage/config
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: homepage
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
