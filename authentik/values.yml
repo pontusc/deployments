@@ -30,8 +30,10 @@ blueprints:
     - argocd-integration-blueprint
     - oauth-flow-blueprint
     - forward-auth-blueprint
+    - grafana-integration-blueprint
   secrets:
     - argocd-oauth-provider-blueprint
+    - grafana-oauth-provider-blueprint
     - google-oauth-source-blueprint
 
 redis:
