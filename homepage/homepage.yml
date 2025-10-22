@@ -113,7 +113,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`nejlikka.com`)
+      match: Host(`cloud.nejlikka.com`)
       services:
         - kind: Service
           name: homepage
