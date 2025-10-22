@@ -1,0 +1,7 @@
+configMapGenerator:
+  - name: alloy-config
+    files:
+      - conf.allow
+
+generatorOptions:
+  disableNameSuffixHash: true
