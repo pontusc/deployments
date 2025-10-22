@@ -1,0 +1,55 @@
+- Cluster Management:
+    - Traefik:
+        href: https://traefik.cloud.nejlikka.com
+        siteMonitor: http://traefik.kube-system.svc.cluster.local:8080
+        icon: traefik.png
+        description: Ingress
+        widget:
+          type: traefik
+          url: http://traefik.kube-system.svc.cluster.local:8080
+
+    - Prometheus:
+        href: https://prometheus.cloud.nejlikka.com
+        siteMonitor: http://prometheus-grafana-kube-pr-prometheus.monitoring.svc.cluster.local:9090
+        icon: prometheus.png
+        description: Metrics
+        widget:
+          type: prometheus
+          url: http://prometheus-grafana-kube-pr-prometheus.monitoring.svc.cluster.local:9090
+
+    # - ArgoCD:
+    #     href: https://argocd.cloud.nejlikka.com
+    #     siteMonitor: http://argocd-server.argocd.svc.cluster.local:80
+    #     icon: argo-cd.png
+    #     description: Kubernetes GitOps
+    #     widget:
+    #       type: argocd
+    #       url: http://argocd-server.argocd.svc.cluster.local:80
+    #       key: "{{HOMEPAGE_VAR_ARGO_API_KEY}}"
+
+    # - Grafana:
+    #     href: https://grafana.cloud.nejlikka.com
+    #     siteMonitor: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:80
+    #     icon: grafana.png
+    #     description: Reports & Alerts
+    #     widget:
+    #       type: grafana
+    #       url: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:80
+    #       username: admin
+    #       password: {? {HOMEPAGE_VAR_GRAFANA_PASSWORD: ''} : ''}
+
+    # - Authentik:
+    #     href: https://authentik.cloud.nejlikka.com
+    #     siteMonitor: http://authentik-server.authentik.svc.cluster.local
+    #     icon: authentik.png
+    #     description: Authentication
+    #     widget:
+    #       type: authentik
+    #       url: http://authentik-server.authentik.svc.cluster.local
+    #       key: "{{HOMEPAGE_VAR_AUTHENTIK_API_KEY}}"
+
+    - Longhorn:
+        href: https://longhorn.cloud.nejlikka.com
+        siteMonitor: http://longhorn-frontend.longhorn-system.svc.cluster.local
+        icon: longhorn.png
+        description: CSI Provider

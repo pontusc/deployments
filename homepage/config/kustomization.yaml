@@ -1,0 +1,18 @@
+configMapGenerator:
+  # Name of configmap
+  - name: homepage-config
+    files:
+      # All contents and keys
+      - bookmarks.yaml
+      - custom.css
+      - custom.js
+      - docker.yaml
+      - kubernetes.yaml
+      - kustomization.yaml
+      - services.yaml
+      - settings.yaml
+      - widgets.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+

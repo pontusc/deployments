@@ -1,0 +1,29 @@
+description: Cluster homepage
+title: Pontus Homelab
+favicon: https://img.icons8.com/?size=100&id=1340&format=png&color=000000
+background: https://w.wallhaven.cc/full/d6/wallhaven-d6j79o.png
+statusStyle: "dot"
+cardBlur: md
+theme: dark
+language: en
+disableCollapse: true
+color: slate
+
+layout:
+  Cluster Management:
+    icon: kubernetes.png
+    useEqualHeights: true
+    style: row
+    columns: 2
+  Deployments:
+    useEqualHeights: true
+    style: row
+    columns: 4
+  Repositories:
+    style: row
+    columns: 6
+    useEqualHeights: true
+
+providers:
+  longhorn:
+    url: http://longhorn-frontend.longhorn-system.svc.cluster.local

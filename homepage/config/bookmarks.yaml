@@ -1,0 +1,24 @@
+- Repositories:
+    - GitHub:
+        - abbr: GH
+          icon: github.png
+          href: https://github.com/pontusc
+          description: GitHub Profile
+
+    - GitHub:
+        - abbr: GL
+          icon: gitlab.png
+          href: https://gitlab.com/pontusc
+          description: GitLab Profile
+
+    - Dotfiles:
+        - abbr: DF
+          icon: github.png
+          href: https://github.com/pontusc/.dotfiles
+          description: dotfiles
+
+    - Neovim:
+        - abbr: NVim
+          icon: github.png
+          href: https://github.com/pontusc/nvim
+          description: Neovim conf
