@@ -39,6 +39,10 @@ spec:
 
     - repoURL: https://gitlab.com/homelab-cloud/deployments.git
       targetRevision: HEAD
+      path: monitoring/resources
+
+    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+      targetRevision: HEAD
       path: monitoring
 
   destination:
