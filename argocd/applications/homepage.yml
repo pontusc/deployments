@@ -9,11 +9,11 @@ metadata:
 spec:
   project: deployments
   sources:
-    - repoURL: https://gitlab.com/homelab-cloud/deployments
+    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
       targetRevision: HEAD
       path: homepage
 
-    - repoURL: https://gitlab.com/homelab-cloud/deployments
+    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
       targetRevision: HEAD
       path: homepage/config
 
