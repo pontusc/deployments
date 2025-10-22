@@ -27,6 +27,11 @@ spec:
       targetRevision: HEAD
       path: authentik
 
+    # Source for kustomization configmaps
+    - repoURL: https://gitlab.com/homelab-cloud/deployments.git
+      targetRevision: HEAD
+      path: authentik/blueprints
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: authentik
