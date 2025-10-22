@@ -9,7 +9,7 @@ metadata:
 spec:
   project: deployments
   source:
-    repoURL: https://stakater.github.io/stakater-charts
+    repoURL: https://gitlab.com/homelab-cloud/deployments.git
     targetRevision: HEAD
     path: aboutme
 
