@@ -37,6 +37,7 @@ spec:
       targetRevision: HEAD
       ref: values
 
+      # Kustomize configmap source
     - repoURL: https://gitlab.com/homelab-cloud/deployments.git
       targetRevision: HEAD
       path: monitoring/resources
