@@ -1,8 +1,6 @@
 configMapGenerator:
-  # Name of configmap
   - name: homepage-config
     files:
-      # All contents and keys
       - bookmarks.yaml
       - custom.css
       - custom.js
