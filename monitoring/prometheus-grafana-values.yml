@@ -4,6 +4,33 @@ grafana:
     userKey: admin-user
     passwordKey: admin-password
 
+  grafana.ini:
+    server:
+      root_url: "https://grafana.cloud.nejlikka.com"
+
+    auth:
+      signout_redirect_url: "https://authentik.cloud.nejlikka.com/application/o/grafana/end-session/"
+      oauth_auto_login: true
+
+    auth.generic_oauth:
+      name: authentik
+      enabled: true
+      client_id: $__file{/etc/secrets/auth_generic_oauth/client_id}
+      client_secret: $__file{/etc/secrets/auth_generic_oauth/client_secret}
+      scopes: "openid profile email"
+      auth_url: "https://authentik.cloud.nejlikka.com/application/o/authorize/"
+      token_url: "https://authentik.cloud.nejlikka.com/application/o/token/"
+      api_url: "https://authentik.cloud.nejlikka.com/application/o/userinfo/"
+      # Optionally map user groups to Grafana roles
+      role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
+
+  # See this issue https://github.com/grafana/helm-charts/issues/146
+  deploymentStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 0
+
   ingress:
     enabled: true
     ingressClassName: traefik
@@ -22,6 +49,13 @@ grafana:
       url: http://loki-gateway:80
       access: proxy
       isDefault: false
+
+  extraSecretMounts:
+    - name: auth-generic-oauth-secret-mount
+      secretName: auth-generic-oauth-secret
+      defaultMode: 0440
+      mountPath: /etc/secrets/auth_generic_oauth
+      readOnly: true
 
 prometheus:
   ingress:
