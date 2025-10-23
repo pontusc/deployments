@@ -27,10 +27,7 @@ worker:
 
 blueprints:
   configMaps:
-    - argocd-integration-blueprint
-    - oauth-flow-blueprint
-    - forward-auth-blueprint
-    - grafana-integration-blueprint
+    - authentik-blueprints
   secrets:
     - argocd-oauth-provider-blueprint
     - grafana-oauth-provider-blueprint
