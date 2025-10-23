@@ -51,11 +51,13 @@ entries:
           groups = [
             Group.objects.get(name="ArgoCD Admins"),
             Group.objects.get(name="authentik Admins")
+            Group.objects.get(name="Grafana Admins")
           ]
         else:
           groups = [
             Group.objects.get(name="ArgoCD Viewers"),
             Group.objects.get(name="authentik Read-only")
+            Group.objects.get(name="Grafana Viewers")
           ]
         for group in groups:
           user.ak_groups.add(group)
