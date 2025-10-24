@@ -34,7 +34,7 @@
         description: Reports & Alerts
         widget:
           type: grafana
-          url: https://prometheus-grafana.monitoring.svc.cluster.local:80
+          url: http://prometheus-grafana.monitoring.svc.cluster.local:80
           username: admin
           password: "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}"
           version: 2
