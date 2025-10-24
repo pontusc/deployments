@@ -38,6 +38,7 @@ metrics:
       enabled: true
 
 api:
+  enabled: true
   dashboard: true
   insecure: true
 
