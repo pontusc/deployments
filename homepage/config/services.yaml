@@ -38,15 +38,16 @@
     #       username: admin
     #       password: {? {HOMEPAGE_VAR_GRAFANA_PASSWORD: ''} : ''}
 
-    # - Authentik:
-    #     href: https://authentik.cloud.nejlikka.com
-    #     siteMonitor: http://authentik-server.authentik.svc.cluster.local
-    #     icon: authentik.png
-    #     description: Authentication
-    #     widget:
-    #       type: authentik
-    #       url: http://authentik-server.authentik.svc.cluster.local
-    #       key: "{{HOMEPAGE_VAR_AUTHENTIK_API_KEY}}"
+    - Authentik:
+        href: https://authentik.cloud.nejlikka.com
+        siteMonitor: http://authentik-server.authentik.svc.cluster.local
+        icon: authentik.png
+        description: Authentication & Authorization
+        widget:
+          type: authentik
+          url: http://authentik-server.authentik.svc.cluster.local
+          key: "{{HOMEPAGE_VAR_AUTHENTIK_API_KEY}}"
+          version: 2
 
     - Longhorn:
         href: https://longhorn.cloud.nejlikka.com
