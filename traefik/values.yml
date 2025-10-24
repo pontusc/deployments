@@ -37,6 +37,10 @@ metrics:
     serviceMonitor:
       enabled: true
 
+api:
+  dashboard: true
+  insecure: false
+
 providers:
   kubernetesCRD:
     allowCrossNamespace: true
