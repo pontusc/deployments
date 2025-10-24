@@ -8,7 +8,6 @@ spec:
   dnsNames:
     - "nejlikka.com"
     - "*.nejlikka.com"
-    - "cloud.nejlikka.com"
     - "*.cloud.nejlikka.com"
   issuerRef:
     name: cluster-issuer-cloudflare
