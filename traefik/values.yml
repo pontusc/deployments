@@ -37,11 +37,6 @@ metrics:
     serviceMonitor:
       enabled: true
 
-api:
-  enabled: true
-  dashboard: true
-  insecure: true
-
 providers:
   kubernetesCRD:
     allowCrossNamespace: true
@@ -63,3 +58,9 @@ tlsStore:
 logs:
   access:
     enabled: true
+
+additionalArguments:
+  - "--api=true"
+  - "--api.dashboard=true"
+  - "--api.disabledashboardad=true"
+  - "--api.insecure=true"
