@@ -27,16 +27,17 @@
           url: http://argocd-server.argocd.svc.cluster.local:80
           key: "{{HOMEPAGE_VAR_ARGO_API_KEY}}"
 
-    # - Grafana:
-    #     href: https://grafana.cloud.nejlikka.com
-    #     siteMonitor: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:80
-    #     icon: grafana.png
-    #     description: Reports & Alerts
-    #     widget:
-    #       type: grafana
-    #       url: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:80
-    #       username: admin
-    #       password: {? {HOMEPAGE_VAR_GRAFANA_PASSWORD: ''} : ''}
+    - Grafana:
+        href: https://grafana.cloud.nejlikka.com
+        siteMonitor: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:80
+        icon: grafana.png
+        description: Reports & Alerts
+        widget:
+          type: grafana
+          url: http://prometheus-grafana.monitoring.svc.cluster.local:80
+          username: homepage
+          password: "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}"
+          version: 2
 
     - Authentik:
         href: https://authentik.cloud.nejlikka.com
