@@ -35,8 +35,8 @@
         widget:
           type: grafana
           url: http://prometheus-grafana.monitoring.svc.cluster.local:80
-          username: homepage
-          password: {{HOMEPAGE_VAR_GRAFANA_PASSWORD}}
+          username: homepage@localhost
+          password: "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}"
           version: 2
 
     - Authentik:
