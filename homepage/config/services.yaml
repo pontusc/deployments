@@ -17,15 +17,15 @@
           type: prometheus
           url: http://prometheus-grafana-kube-pr-prometheus.monitoring.svc.cluster.local:9090
 
-    # - ArgoCD:
-    #     href: https://argocd.cloud.nejlikka.com
-    #     siteMonitor: http://argocd-server.argocd.svc.cluster.local:80
-    #     icon: argo-cd.png
-    #     description: Kubernetes GitOps
-    #     widget:
-    #       type: argocd
-    #       url: http://argocd-server.argocd.svc.cluster.local:80
-    #       key: "{{HOMEPAGE_VAR_ARGO_API_KEY}}"
+    - ArgoCD:
+        href: https://argocd.cloud.nejlikka.com
+        siteMonitor: http://argocd-server.argocd.svc.cluster.local:80
+        icon: argo-cd.png
+        description: Kubernetes GitOps
+        widget:
+          type: argocd
+          url: http://argocd-server.argocd.svc.cluster.local:80
+          key: "{{HOMEPAGE_VAR_ARGO_API_KEY}}"
 
     # - Grafana:
     #     href: https://grafana.cloud.nejlikka.com
