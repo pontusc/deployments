@@ -29,7 +29,7 @@
 
     - Grafana:
         href: https://grafana.cloud.nejlikka.com
-        siteMonitor: http://kube-prometheus-stack-grafana.monitoring.svc.cluster.local:80
+        siteMonitor: http://prometheus-grafana.monitoring.svc.cluster.local:80
         icon: grafana.png
         description: Reports & Alerts
         widget:
