@@ -166,19 +166,19 @@ spec:
             - name: HOMEPAGE_VAR_ARGO_API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: homepage-secrets
+                  name: homepage-keys
                   key: argo-api-key
 
           # - name: HOMEPAGE_VAR_GRAFANA_PASSWORD
           #   valueFrom:
           #     secretKeyRef:
-          #       name: homepage-secrets
+          #       name: homepage-keys
           #       key: grafana-password
 
           # - name: HOMEPAGE_VAR_AUTHENTIK_API_KEY
           #   valueFrom:
           #     secretKeyRef:
-          #       name: homepage-secrets
+          #       name: homepage-keys
           #       key: authentik-api-key
 
           ports:
