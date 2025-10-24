@@ -6,6 +6,8 @@ metadata:
 spec:
   secretName: cluster-wildcard-certificate-tls
   dnsNames:
+    - "nejlikka.com"
+    - "*.nejlikka.com"
     - "cloud.nejlikka.com"
     - "*.cloud.nejlikka.com"
   issuerRef:
