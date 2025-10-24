@@ -59,6 +59,8 @@ logs:
   access:
     enabled: true
 
+# TODO: Change from insecure and add a secret with token to verify access.
+# For now API is secure behind Authentik ForwardAuth
 additionalArguments:
   - "--api=true"
   - "--api.dashboard=true"
