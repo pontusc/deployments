@@ -1,0 +1,14 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: homepage-keys
+  namespace: homepage
+spec:
+  encryptedData:
+    argo-api-key: AgAUylTt1qsEzW5kVfbYO46BA5Ud1Up2yxHMdPDwyDqhiRzVhGUNqaGpIrTVReWmZfDJ4q9rbYfgBrOEGKeizpfNNe2NKdMnwHaYi/e2DiAT4FHHCcVKwlsK5l/j7ylJbs+dJpkCbM/xHOqsIw1PklRPMlBFkND7tRKnlHE+SPgQK5PsHM5qojM5x+gUF+uvTcIwrDDiO+Og3QgdvcI1n+wys7jXrsC0yoNYW4LG5k8ikk1aONrgivruZm3XZTpY4hhtzPlLkVr0+6iFfMMfBYQ1Yjrklcpd+nFu35TwYrpWtTrUhtdWRovSbRnAXUTmnfWnd0ssTbAjvi7eir46vCBEg5x4Jg/hZn5JUcc7rDNOZUJJywEfs11V0NSDTn0zWn53dHq90HK+DnsK8w/1U2nqwA9sDuyIqBRFU46x+Cb+jBubw+hn5FtISmn6ba8TLtuxaNHE5H6yku0dE0mvjXI+myFlK0n6DKaxIIMatk8Z+FLtQmnM6/Q3erEPkTjSSKOncT1TfAW0fN2EIUGWZDrLJ7N/0ntMqaq41v8CJZ+YI62Lme4JZ2Cp+VnV414pW19rGLs4qp/ZupRehQNnkPuS6mNqr/ZcV93Ov9p01HgFSF7vbo5MLv31mbk01tuGuliPp0C03fvGXpUh5k/y3wUR1AFmV3oTiPxmXszzir9npU3pfcD3B9x30qGrwB5uLb16kfDal/e0zlvz1RtstFyjeoRRtklztexcLaFQcru5hsjHGSZVGQOXBSkL13mjPROXCIZ88vDhj/yZvN0WWWxOMO9a9PnDKKzLz8sbHRKQ7CA94sRnZGhtPACNSmVgf8CDCGpPggH1m34Igei1hreL9gUzCLwPNZaV3a3knNhaHnE6eGtWmh6VtzYoNe6lHY+TA4HjnDNdBOGa0DXQxV6uI/J9vrSEZFO67Ldyjr076WWq3qp3lqA+P8KVGkQyO+Kr9yHKgutRXMptZKIPrAcxdv1EJLZ6XMMtnsS9UtvtYpNrp1Bo7bB2/nCqPDy+Sco=
+  template:
+    metadata:
+      name: homepage-keys
+      namespace: homepage
+    type: Opaque
