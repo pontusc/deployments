@@ -175,11 +175,11 @@ spec:
                   name: homepage-keys
                   key: authentik-api-key
 
-          # - name: HOMEPAGE_VAR_GRAFANA_PASSWORD
-          #   valueFrom:
-          #     secretKeyRef:
-          #       name: homepage-keys
-          #       key: grafana-password
+            - name: HOMEPAGE_VAR_GRAFANA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: homepage-keys
+                  key: grafana-password
 
           ports:
             - name: http
