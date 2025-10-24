@@ -117,7 +117,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`cloud.nejlikka.com`)
+      match: Host(`nejlikka.com`)
       services:
         - kind: Service
           name: homepage
@@ -161,7 +161,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: HOMEPAGE_ALLOWED_HOSTS
-              value: cloud.nejlikka.com
+              value: nejlikka.com
 
             - name: HOMEPAGE_VAR_ARGO_API_KEY
               valueFrom:
