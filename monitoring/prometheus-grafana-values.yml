@@ -83,7 +83,7 @@ prometheus:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 9Gi
+              storage: 10Gi
 
 alertmanager:
   ingress:
