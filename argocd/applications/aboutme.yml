@@ -9,9 +9,9 @@ metadata:
 spec:
   project: deployments
   source:
-    repoURL: https://github.com/pontusc/aboutme
+    repoURL: https://github.com/pontusc/deployments.git
     targetRevision: HEAD
-    path: manifests
+    path: aboutme
 
   destination:
     server: "https://kubernetes.default.svc"
