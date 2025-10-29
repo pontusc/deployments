@@ -1,0 +1,40 @@
+apiVersion: upgrade.cattle.io/v1
+kind: Plan
+metadata:
+  name: server-update-all
+  namespace: system-upgrade
+spec:
+  concurrency: 1
+  cordon: true
+  # drain:
+  #   force: true
+  #   timeout: 300
+  nodeSelector:
+    matchExpressions:
+      - key: node-role.kubernetes.io/control-plane
+        operator: In
+        values:
+          - "true"
+  serviceAccountName: system-upgrade
+  # prepare:
+  #   image: ubuntu
+  #   command:
+  #     - /bin/sh
+  #     - -c
+  #   args:
+  #     - |
+  #       apt-get update && \
+  #       apt-get upgrade -y && \
+  #       apt-get autoremove -y && \
+  #       if [ -f /var/run/reboot-required ]; then
+  #         touch /host/run/system-upgrade/reboot
+  #       fi
+  upgrade:
+    image: rancher/k3s-upgrade
+  channel: https://update.k3s.io/v1-release/channels/stable
+  # window:
+  #   days:
+  #     - monday
+  #   startTime: 03:00
+  #   endTime: 05:00
+  #   timeZone: UTC
